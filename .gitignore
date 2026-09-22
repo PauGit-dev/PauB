@@ -1,0 +1,15 @@
+# Material de referencia confidencial — nunca se publica
+referencias/
+*.docx
+*.xlsx
+Brief_*.md
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Dependencias / build (no se usan, por si acaso)
+node_modules/
+.vercel/
+.env
+.env.*

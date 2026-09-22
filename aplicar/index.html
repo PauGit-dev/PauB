@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <title>Solicita tu plaza — UGC Creator con Paula</title>
+  <meta name="description" content="Cuéntanos tu punto de partida y te decimos si podemos ayudarte. Este no es un formulario de compra: es el primer paso para ver si encajas en el programa.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+
+  <!-- Meta Pixel: el stub queda aquí, pero el script externo NO se carga
+       hasta que la usuaria acepta en el banner de cookies (main.js). -->
+  <script>
+    window.META_PIXEL_ID = 'META_PIXEL_ID';
+    window.META_PIXEL_EVENTS = ['PageView'];
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[]}(window,document);
+  </script>
+
+  <link rel="preload" href="../assets/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/playfair-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="header" data-header>
+    <div class="container header__inner">
+      <a class="wordmark" href="../" aria-label="UGC Creator con Paula — inicio">
+        <span class="wordmark__main">UGC Creator</span>
+        <span class="wordmark__sub">con Paula</span>
+      </a>
+      <a class="btn btn--ghost btn--sm" href="../">Volver</a>
+    </div>
+  </header>
+
+  <main id="contenido" class="section">
+    <div class="container">
+
+      <div class="section__head reveal">
+        <span class="eyebrow">Paso 1 de 1</span>
+        <h1>Cuéntanos tu punto de partida y <span class="italic">te decimos si podemos ayudarte</span></h1>
+        <p class="lead mt-5">
+          Este no es un formulario de compra. Es el primer paso para ver si
+          encajas en el programa.
+        </p>
+      </div>
+
+      <div class="apply-layout">
+
+        <!-- ========================= FORMULARIO ======================== -->
+        <form class="form card reveal" data-apply-form novalidate>
+
+          <div class="field" data-field="nombre">
+            <label class="field__label" for="nombre">
+              Tu nombre <span class="field__req" aria-hidden="true">*</span>
+            </label>
+            <input class="input" type="text" id="nombre" name="nombre"
+                   autocomplete="name" placeholder="Nombre y apellidos" required>
+            <p class="field__error" role="alert"></p>
+          </div>
+
+          <div class="field" data-field="email">
+            <label class="field__label" for="email">
+              Tu email <span class="field__req" aria-hidden="true">*</span>
+            </label>
+            <input class="input" type="email" id="email" name="email"
+                   autocomplete="email" inputmode="email"
+                   placeholder="tunombre@email.com" required>
+            <p class="field__error" role="alert"></p>
+          </div>
+
+          <div class="field" data-field="whatsapp">
+            <label class="field__label" for="whatsapp">
+              Tu WhatsApp <span class="field__req" aria-hidden="true">*</span>
+            </label>
+            <input class="input" type="tel" id="whatsapp" name="whatsapp"
+                   autocomplete="tel" inputmode="tel"
+                   placeholder="+34 600 000 000" required>
+            <p class="field__hint">Es por donde te escribiremos si encajas.</p>
+            <p class="field__error" role="alert"></p>
+          </div>
+
+          <div class="field" data-field="instagram">
+            <label class="field__label" for="instagram">
+              Tu Instagram <span class="muted">(opcional)</span>
+            </label>
+            <input class="input" type="text" id="instagram" name="instagram"
+                   autocomplete="off" placeholder="@tuusuario">
+            <p class="field__hint">Nos ayuda a conocerte un poco antes de hablar.</p>
+          </div>
+
+          <fieldset class="field" data-field="punto_partida">
+            <legend class="field__label">
+              ¿En qué punto estás ahora mismo? <span class="field__req" aria-hidden="true">*</span>
+            </legend>
+            <div class="option-list">
+              <label class="option">
+                <input type="radio" name="punto_partida" value="Aún no he empezado">
+                <span class="option__dot" aria-hidden="true"></span>
+                <span>Aún no he empezado</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="punto_partida" value="Ya tengo portfolio">
+                <span class="option__dot" aria-hidden="true"></span>
+                <span>Ya tengo portfolio</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="punto_partida" value="Ya he hecho alguna colaboración">
+                <span class="option__dot" aria-hidden="true"></span>
+                <span>Ya he hecho alguna colaboración</span>
+              </label>
+            </div>
+            <p class="field__error" role="alert"></p>
+          </fieldset>
+
+          <div class="field" data-field="objetivo">
+            <label class="field__label" for="objetivo">
+              ¿Qué te gustaría conseguir con el UGC en los próximos meses?
+              <span class="field__req" aria-hidden="true">*</span>
+            </label>
+            <textarea class="textarea" id="objetivo" name="objetivo"
+                      placeholder="No hace falta que sea perfecto. Dime qué te gustaría que cambiase." required></textarea>
+            <p class="field__error" role="alert"></p>
+          </div>
+
+          <div class="field" data-field="freno">
+            <label class="field__label" for="freno">
+              ¿Qué es lo que más te está frenando ahora mismo?
+              <span class="field__req" aria-hidden="true">*</span>
+            </label>
+            <textarea class="textarea" id="freno" name="freno"
+                      placeholder="Sé sincera. Esto es justo lo que necesito saber para ayudarte." required></textarea>
+            <p class="field__error" role="alert"></p>
+          </div>
+
+          <fieldset class="field" data-field="dispuesta">
+            <legend class="field__label">
+              ¿Estás dispuesta a dedicar tiempo a crear, contactar marcas y
+              aplicar el proceso? <span class="field__req" aria-hidden="true">*</span>
+            </legend>
+            <div class="option-list option-list--inline">
+              <label class="option">
+                <input type="radio" name="dispuesta" value="Sí">
+                <span class="option__dot" aria-hidden="true"></span>
+                <span>Sí</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="dispuesta" value="No">
+                <span class="option__dot" aria-hidden="true"></span>
+                <span>No</span>
+              </label>
+            </div>
+            <p class="field__error" role="alert"></p>
+          </fieldset>
+
+          <div class="field" data-field="consentimiento">
+            <label class="consent">
+              <input type="checkbox" name="consentimiento" value="Sí">
+              <span class="consent__box" aria-hidden="true"></span>
+              <span class="consent__text">
+                He leído y acepto la <a href="../privacidad/">política de privacidad</a>
+                y doy mi consentimiento para que se traten mis datos con el fin de
+                valorar mi solicitud y ponerse en contacto conmigo.
+                <span class="field__req" aria-hidden="true">*</span>
+              </span>
+            </label>
+            <p class="field__error" role="alert"></p>
+          </div>
+
+          <div class="form__submit">
+            <p class="form__status" data-status hidden role="alert"></p>
+            <button class="btn btn--primary btn--block" type="submit" data-submit>
+              Enviar mi solicitud
+            </button>
+            <p class="fineprint">
+              Tus datos son confidenciales. Te contactaremos en poco tiempo.
+            </p>
+          </div>
+
+        </form>
+
+        <!-- ======================= CÓMO VA ESTO ======================== -->
+        <aside class="card card--violet reveal">
+          <h2 class="card-title mb-5">Cómo va esto</h2>
+
+          <ol class="steps">
+            <li class="step">
+              <span class="step__num">1</span>
+              <div>
+                <p class="step__title">Envías tu solicitud</p>
+                <p class="step__text">Sin pagar nada y sin compromiso.</p>
+              </div>
+            </li>
+            <li class="step">
+              <span class="step__num">2</span>
+              <div>
+                <p class="step__title">La leemos una a una</p>
+                <p class="step__text">De verdad. Por eso pedimos que respondas con sinceridad.</p>
+              </div>
+            </li>
+            <li class="step">
+              <span class="step__num">3</span>
+              <div>
+                <p class="step__title">Si encajas, hablamos</p>
+                <p class="step__text">Te escribimos por WhatsApp o Instagram y te contamos los detalles con calma.</p>
+              </div>
+            </li>
+          </ol>
+
+          <hr class="hairline mt-8 mb-5">
+
+          <p class="fineprint">
+            Es un programa por plazas limitadas, no un curso siempre abierto
+            — así puedo acompañar de verdad a cada cohorte.
+          </p>
+        </aside>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>
+        <a class="wordmark" href="../">
+          <span class="wordmark__main">UGC Creator</span>
+          <span class="wordmark__sub">con Paula</span>
+        </a>
+      </div>
+      <div>
+        <ul class="footer__links">
+          <li><a href="../">Inicio</a></li>
+          <li><a href="../privacidad/">Privacidad</a></li>
+          <li><a href="mailto:hellougcbypaula@gmail.com">Contacto</a></li>
+        </ul>
+        <p class="footer__legal mt-4">
+          © 2026 Paula Bagó. Este programa no garantiza resultados económicos.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <aside class="cookie-banner" data-cookie-banner hidden aria-label="Consentimiento de cookies">
+    <p class="cookie-banner__text">
+      Uso cookies de terceros para medir cómo funcionan mis anuncios. No se
+      carga nada hasta que tú lo aceptas.
+      <a href="../privacidad/">Ver la política de privacidad</a>.
+    </p>
+    <div class="cookie-banner__actions">
+      <button class="btn btn--ghost btn--sm" type="button" data-consent="rejected">Rechazar</button>
+      <button class="btn btn--primary btn--sm" type="button" data-consent="accepted">Aceptar</button>
+    </div>
+  </aside>
+
+  <script src="../main.js" defer></script>
+</body>
+</html>
