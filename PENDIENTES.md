@@ -20,7 +20,7 @@ comentario `<!-- PENDIENTE: … -->`.
 | # | Qué falta | Dónde |
 |---|---|---|
 | 5 | **[PENDIENTE: testimonios]** — no hay ninguno y no me los invento. El bloque está maquetado y **oculto** con el atributo `hidden`; para activarlo basta con quitarlo. | `index.html`, sección `#testimonios` |
-| 6 | **[PENDIENTE: vídeo de bienvenida de Paula]** — hay un hueco con las proporciones de un vertical. | `gracias/index.html` |
+| ~~6~~ | ~~**Vídeo de bienvenida.**~~ **HECHO.** Puesto el de Wistia (`dxpw9vwugj`, 2:45) con su miniatura real. También está el VSL del hero (`22yebgn945`, 23 min). Ambos cargan por fachada: hasta que no se pulsa play no se contacta con Wistia. | `gracias/index.html`, `index.html` |
 | 7 | **Logos de marca.** Sin archivos de logo, las marcas aparecen sólo como texto: Garnier, Nivea, Shein, Sheglam, Nacomi, Platanomelón, Milano. **Hay que validar el listado con Paula** y conseguir los logos con permiso de uso. | `index.html`, sección de marcas |
 | 8 | **Validar el temario** de los 11 bloques con Paula antes de publicar. Es un punto explícito del checklist del brief. | `index.html`, sección de módulos |
 | 9 | **Confirmar cifras de seguidores** (24k Instagram / 59k TikTok). Vienen del brief y pueden estar desactualizadas. | `index.html`, bloque de autoridad |
@@ -37,6 +37,9 @@ comentario `<!-- PENDIENTE: … -->`.
 | 15 | **Endpoint público.** La URL del Apps Script va escrita en `main.js`, así que es visible para cualquiera que mire el código de la página. | Es inevitable con un formulario estático: el navegador tiene que conocer el destino. El riesgo real es que alguien mande solicitudes falsas a mano. Si algún día molesta, lo barato es un campo trampa oculto que los bots rellenan y las personas no. De momento no lo he puesto para no complicar la v1. |
 | 16 | **Plazo de la primera colaboración.** El brief daba una expectativa concreta (gifted en 1–2 semanas, pagada en el primer mes). | En la FAQ **no doy ninguna fecha**, porque chocaba con la regla de no prometer resultados rápidos. Digo que depende de su constancia y que primero llegan las gifted. Si Paula quiere ser más concreta, es su decisión. |
 
+| 17 | **Duración visible en el VSL.** El botón del hero pone «Ver el vídeo · 23 min». | Lo he puesto por coherencia con el tono honesto del resto, pero anunciar 23 minutos puede frenar clics. Si prefieres quitarlo, es borrar « · 23 min» de `index.html`. |
+| 18 | **Aviso al pulsar play.** Ahora no hay ninguno. | Wistia guarda un identificador técnico en su propio dominio cuando se reproduce. Lo he declarado en la política de privacidad y nada se carga sin que la visitante pulse. Si quieres ser aún más explícito, se puede añadir una línea pequeña bajo el botón. Dime y la pongo. |
+
 ## 4. Comprobado antes de entregar
 
 - Sin precios, cifras económicas ni «inversión» en ninguna página.
@@ -44,5 +47,6 @@ comentario `<!-- PENDIENTE: … -->`.
 - CTA único «Quiero aplicar» en todo el funnel; el botón del formulario es «Enviar mi solicitud». No aparece «comprar» ni «inscribirme».
 - Las cuatro preguntas de cualificación están, con los `name` exactos.
 - El `.gitignore` excluye el brief (`.md` y `.docx`) y el Excel de leads: no se sube nada confidencial.
-- Lighthouse móvil: **99–100 en rendimiento, 100 en accesibilidad y 100 en buenas prácticas** en las cuatro páginas.
+- Lighthouse móvil, ya con los vídeos: **99–100 en rendimiento, 100 en accesibilidad y 100 en buenas prácticas**, CLS 0 en las cuatro páginas.
 - El Pixel no hace ni una sola petición a Meta hasta que se acepta el banner. El evento `Lead` se dispara sólo en `/gracias/`.
+- Los vídeos no contactan con Wistia hasta que se pulsa play: verificado con el navegador, cero peticiones a terceros al cargar la página.

@@ -176,7 +176,48 @@ const CONSENT_KEY = 'ugc_paula_consent';
   }
 
   /* ===================================================================
-     6. Formulario de solicitud
+     6. Vídeos de Wistia
+     Fachada: sólo se contacta con Wistia cuando la visitante pulsa play.
+     Se carga con doNotTrack, así que no instala ninguna cookie y no
+     depende del banner de consentimiento.
+     =================================================================== */
+
+  function initVideos() {
+    const boxes = document.querySelectorAll('[data-video]');
+
+    boxes.forEach(function (box) {
+      const trigger = box.querySelector('.video__trigger');
+      if (!trigger) return;
+
+      trigger.addEventListener('click', function () {
+        const id = box.dataset.video;
+
+        /* Todavía sin configurar: no cargamos un reproductor roto. */
+        if (!id || id.indexOf('WISTIA_ID') === 0) {
+          if (!box.querySelector('.video__pending')) {
+            const aviso = document.createElement('p');
+            aviso.className = 'video__pending';
+            aviso.textContent = 'Falta el ID de Wistia de este vídeo.';
+            box.appendChild(aviso);
+          }
+          return;
+        }
+
+        const frame = document.createElement('iframe');
+        frame.className = 'video__frame';
+        frame.src = 'https://fast.wistia.net/embed/iframe/' + encodeURIComponent(id) +
+                    '?doNotTrack=true&autoPlay=true&playsinline=true';
+        frame.title = trigger.textContent.trim() || 'Vídeo';
+        frame.allow = 'autoplay; fullscreen';
+        frame.allowFullscreen = true;
+
+        trigger.replaceWith(frame);
+      });
+    });
+  }
+
+  /* ===================================================================
+     7. Formulario de solicitud
      =================================================================== */
 
   const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i;
@@ -328,7 +369,7 @@ const CONSENT_KEY = 'ugc_paula_consent';
   }
 
   /* ===================================================================
-     7. Arranque
+     8. Arranque
      =================================================================== */
 
   function init() {
@@ -337,6 +378,7 @@ const CONSENT_KEY = 'ugc_paula_consent';
     initStickyCta();
     initFaq();
     initReveal();
+    initVideos();
     initForm();
   }
 

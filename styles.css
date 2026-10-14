@@ -543,20 +543,20 @@ h4 { font-size: var(--fs-h4); }
   color: var(--c-text-dim);
 }
 
-.hero__photo {
-  width: min(78%, 320px);
-  margin-top: var(--sp-2);
+.hero__video {
+  width: 100%;
+  max-width: 760px;
+  margin-block: var(--sp-2);
+  padding: 6px;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--c-border-violet);
+  background: var(--grad-card);
+  box-shadow:
+    0 30px 70px -30px rgba(0, 0, 0, 0.9),
+    0 0 70px -24px rgba(168, 85, 247, 0.5);
 }
 
-.hero__photo::after {
-  content: "";
-  position: absolute;
-  inset: -18% -12%;
-  z-index: -1;
-  border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(224, 71, 155, 0.35), transparent 72%);
-  filter: blur(12px);
-}
+.hero__video .video__trigger { border-radius: calc(var(--r-lg) - 7px); }
 
 /* ============================== 6. MARCAS ============================== */
 .brands { text-align: center; }
@@ -1176,29 +1176,112 @@ h4 { font-size: var(--fs-h4); }
   box-shadow: 0 0 40px -8px rgba(168, 85, 247, 0.6);
 }
 
-.video-slot {
+/* --- Vídeo de Wistia -------------------------------------------------
+   Fachada: hasta que no se pulsa no se carga nada de Wistia. Así la página
+   sigue siendo rápida y no se contacta con un tercero sin querer.
+   La proporción la fija .video--9x16 o .video--16x9.
+   -------------------------------------------------------------------- */
+.video { position: relative; }
+
+.video--9x16 { --video-aspect: 9 / 16; }
+.video--16x9 { --video-aspect: 16 / 9; }
+
+.video--narrow {
+  width: min(100%, 560px);
+  margin-inline: auto;
+  padding: 6px;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--c-border-violet);
+  background: var(--grad-card);
+  box-shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.9);
+}
+
+.video--narrow .video__trigger { border-radius: calc(var(--r-lg) - 7px); }
+
+.video__trigger {
+  display: block;
   position: relative;
-  aspect-ratio: 9 / 16;
-  width: min(100%, 300px);
-  margin: var(--sp-8) auto 0;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  border-radius: calc(var(--r-lg) - 9px);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.video__trigger img {
+  width: 100%;
+  transition: transform var(--dur) var(--ease), filter var(--dur) var(--ease);
+}
+
+.video__trigger::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(6, 2, 10, 0.85), rgba(6, 2, 10, 0.1) 45%, transparent 65%);
+  pointer-events: none;
+}
+
+.video__trigger:hover img { transform: scale(1.03); }
+
+.video__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
   display: grid;
   place-items: center;
-  gap: var(--sp-2);
-  padding: var(--sp-6);
-  border-radius: var(--r-lg);
-  border: 1px dashed var(--c-border-violet);
-  background: var(--c-surface);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--grad-cta);
+  box-shadow: var(--sh-cta);
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+
+.video__play svg {
+  width: 24px;
+  height: 24px;
+  margin-left: 3px;
+  fill: #fff;
+}
+
+.video__trigger:hover .video__play { transform: scale(1.08); box-shadow: var(--sh-cta-hi); }
+
+.video__label {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: var(--sp-4);
+  padding-inline: var(--sp-4);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.9), 0 0 24px rgba(0, 0, 0, 0.6);
+}
+
+/* El reproductor sustituye al botón una vez se pulsa. */
+.video__frame {
+  display: block;
+  width: 100%;
+  aspect-ratio: var(--video-aspect, 16 / 9);
+  border: 0;
+  border-radius: calc(var(--r-lg) - 9px);
+}
+
+/* Aviso visible si todavía no se ha puesto el ID de Wistia. */
+.video__pending {
+  margin-top: var(--sp-3);
+  padding: var(--sp-3);
+  border-radius: var(--r-sm);
+  border: 1px dashed var(--c-pink);
+  background: rgba(224, 71, 155, 0.12);
+  font-size: var(--fs-xs);
+  color: var(--c-pink);
   text-align: center;
 }
-
-.video-slot__label {
-  font-size: var(--fs-xs);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--c-violet-bright);
-}
-
-.video-slot__note { font-size: var(--fs-xs); color: var(--c-text-mute); }
 
 .socials {
   display: flex;
@@ -1389,23 +1472,8 @@ body.has-sticky-cta { padding-bottom: 92px; }
 }
 
 @media (min-width: 900px) {
-  .hero { text-align: left; }
-
-  .hero__inner {
-    display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
-    align-items: center;
-    gap: clamp(2rem, 5vw, 4rem);
-    padding-block: var(--sp-10);
-  }
-
-  .hero__content { justify-items: start; }
-
-  .hero__tail, .hero__sub { margin-inline: 0; }
-  .hero__tail { max-width: 20ch; }
-  .hero__sub  { max-width: 42ch; }
-  .hero__chips { justify-content: flex-start; }
-  .hero__photo { width: 100%; max-width: 380px; justify-self: end; }
+  .hero__inner { padding-block: var(--sp-8); }
+  .hero__sub { max-width: 48ch; }
 
   .authority { grid-template-columns: 0.8fr 1.2fr; align-items: center; }
   .authority__photos .photo-frame:first-child { width: min(62%, 260px); }
